@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19a7e8d336349cbbf30f0f5d4f6cc29, type: 3}
+  m_Name: Green Gem
+  m_EditorClassIdentifier: 
+  gemName: Green Gem
+  startingPrice: 0
+  icon: {fileID: 2800000, guid: 40ea39db165f27b4db82c7d1d9f46570, type: 3}
+  model: {fileID: 91004592075737431, guid: 77ee3a36702b5b141a939b59f69d13d3, type: 3}

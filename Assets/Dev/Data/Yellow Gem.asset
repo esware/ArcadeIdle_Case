@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19a7e8d336349cbbf30f0f5d4f6cc29, type: 3}
+  m_Name: Yellow Gem
+  m_EditorClassIdentifier: 
+  gemName: Yellow Gem
+  startingPrice: 0
+  icon: {fileID: 2800000, guid: ea69e9a45f7e72f4fb2b7968b2fc4e07, type: 3}
+  model: {fileID: 4471505391603878651, guid: e8afb772f47495942be1765c3c606384, type: 3}

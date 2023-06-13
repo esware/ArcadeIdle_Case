@@ -2,6 +2,7 @@ using System;
 using Dev.Scripts;
 using UnityEditor;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 [CustomEditor(typeof(GridManager))]
 public class GridManagerEditor : Editor
@@ -10,6 +11,7 @@ public class GridManagerEditor : Editor
     private SerializedProperty _columnCountProp;
     private SerializedProperty _tilePrefabProp;
     private SerializedProperty _tileSizeProp;
+    private SerializedProperty _gemTypeList;
 
     private void OnEnable()
     {
@@ -17,6 +19,7 @@ public class GridManagerEditor : Editor
         _columnCountProp = serializedObject.FindProperty("columnCount");
         _tilePrefabProp = serializedObject.FindProperty("tilePrefab");
         _tileSizeProp = serializedObject.FindProperty("tileSize");
+        _gemTypeList = serializedObject.FindProperty("gemTypeList");
     }
 
     public override void OnInspectorGUI()
@@ -27,6 +30,7 @@ public class GridManagerEditor : Editor
         EditorGUILayout.PropertyField(_columnCountProp);
         EditorGUILayout.PropertyField(_tilePrefabProp);
         EditorGUILayout.PropertyField(_tileSizeProp);
+        EditorGUILayout.PropertyField(_gemTypeList);
 
         if (GUILayout.Button("Generate Grid"))
         {
@@ -49,13 +53,19 @@ public class GridManagerEditor : Editor
         {
             for (int column = 0; column < gridManager.columnCount; column++)
             {
-                Vector3 spawnPosition = new Vector3(column * gridManager.tileSize, 0f, row * gridManager.tileSize);
-                GameObject tile = (GameObject)PrefabUtility.InstantiatePrefab(gridManager.tilePrefab, gridManager.transform);
-                tile.transform.position = spawnPosition;
+                Vector3 spawnPosition = new Vector3(column * gridManager.tileSize, 1f, row * gridManager.tileSize);
+                var grid = (GameObject)PrefabUtility.InstantiatePrefab(gridManager.tilePrefab, gridManager.transform);
+                grid.transform.position = spawnPosition;
+
+
+                GemType randomGemType = gridManager.gemTypeList[Random.Range(0, gridManager.gemTypeList.Count)];
+                var gemInstance = Instantiate(randomGemType.model, grid.transform);
+                gemInstance.transform.localScale = Vector3.one;
+                grid.name = randomGemType.gemName;
             }
         }
     }
-
+    
 
     private void Reset()
     {

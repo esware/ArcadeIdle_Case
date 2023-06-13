@@ -1,13 +1,13 @@
-﻿namespace Dev.Scripts
+﻿using UnityEngine;
+namespace Dev.Scripts
 {
-    using UnityEngine;
-
+    [System.Serializable]
     [CreateAssetMenu(fileName = "New Gem Type", menuName = "Gem Type")]
     public class GemType : ScriptableObject
     {
         public string gemName;
         public int startingPrice;
-        public Sprite icon;
+        public Texture icon;
         public GameObject model;
     }
 
