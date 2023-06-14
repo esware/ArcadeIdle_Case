@@ -6,8 +6,9 @@ namespace Dev.Scripts
 
     public struct GameEvents
     {
-        public static Action<GameObject> GemCollectedEvent;
-        
+        public static Action<Gem> GemCollectedEvent;
+        public static Action<int,Gem> GemSelledEvent;
+
     }
     public class GameManager
     {

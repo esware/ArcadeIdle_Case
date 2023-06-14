@@ -7,7 +7,7 @@ namespace Dev.Scripts
     {
         public string gemName;
         public int startingPrice;
-        public Texture icon;
+        public Sprite icon;
         public GameObject model;
     }
 

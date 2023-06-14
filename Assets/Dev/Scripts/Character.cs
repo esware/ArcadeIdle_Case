@@ -7,14 +7,29 @@ using UnityEngine;
 
 public class Character : MonoBehaviour
 {
-    public float gemMoveDuration = 0.5f;
-    
+    public static Character Instance
+    {
+        get;
+        private set;
+    }
+
+    public int totalGemCount = 0;
+    public List<Gem> gemStack = new List<Gem>();
+
     private readonly int gemOffset = 1;
     private int _gemOffsetIndex = 1;
-    public List<GameObject> gemStack = new List<GameObject>();
+    private bool _isInSaleArea = false;
 
     private void Awake()
     {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
         SignUpEvents();
     }
 
@@ -23,16 +38,16 @@ public class Character : MonoBehaviour
         GameEvents.GemCollectedEvent += CollectGem;
     }
     
-    private void CollectGem(GameObject gem)
+    private void CollectGem(Gem gem)
     {
         gem.transform.SetParent(transform);
 
         var gemStackOffset = _gemOffsetIndex * gemOffset;
         var targetPosition = new Vector3(0f, gemStackOffset, -1.5f);
 
-        gem.transform.DOLocalMove(targetPosition, gemMoveDuration)
-            .SetEase(Ease.OutElastic);
-        
+        gem.transform.DOLocalMove(targetPosition, .5f)
+            .SetEase(Ease.InSine);
+
         gemStack.Add(gem);
         _gemOffsetIndex++;
         
@@ -40,30 +55,38 @@ public class Character : MonoBehaviour
 
     private IEnumerator SellGemsCoroutine()
     {
-        int totalGold = 0;
         while (gemStack.Count > 0)
         {
-            GameObject topGem = gemStack[gemStack.Count - 1];
+            if (!_isInSaleArea)
+                break;
+            
+            var topGem = gemStack[gemStack.Count - 1];
             var gemType = topGem.GetComponent<Gem>().gemType;
             int gemValue = gemType.startingPrice + (int)(topGem.transform.localScale.x * 100);
-            totalGold += gemValue;
 
+            GameEvents.GemSelledEvent?.Invoke(gemValue,topGem);
+            
             gemStack.Remove(topGem);
-            Destroy(topGem);
+            Destroy(topGem.gameObject);
             _gemOffsetIndex--;
-            Debug.Log("Sold Gem: " + topGem.name + " Gold Earned: " + gemValue);
-
-            yield return new WaitForSeconds(0.4f);
+            yield return new WaitForSeconds(.1f);
         }
-
-        Debug.Log("Total Gold: " + totalGold);
     }
 
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("SaleArea"))
         {
+            _isInSaleArea = true;
             StartCoroutine(SellGemsCoroutine());
         }
     }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag("SaleArea"))
+        {
+            _isInSaleArea = false;
+        }
+    }
+    
 }

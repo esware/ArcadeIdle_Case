@@ -37,11 +37,11 @@ public class Grid : MonoBehaviour
         StartCoroutine(ScaleGem());
     }
 
-    public void CollectGem()
+    private void CollectGem()
     {
         if (_isCollectible)
         { 
-            GameEvents.GemCollectedEvent?.Invoke(_gemInstance);
+            GameEvents.GemCollectedEvent?.Invoke(_gemInstance.GetComponent<Gem>());
             _gemInstance = null;
             
             SpawnGem(GridManager.Instance.gemTypeList);
