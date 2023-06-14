@@ -14,7 +14,8 @@ public class Character : MonoBehaviour
     }
 
     public int totalGemCount = 0;
-    public List<Gem> gemStack = new List<Gem>();
+    public List<Gem> gemList = new List<Gem>();
+    public List<Gem> soldGems = new List<Gem>();
 
     private readonly int gemOffset = 1;
     private int _gemOffsetIndex = 1;
@@ -48,29 +49,42 @@ public class Character : MonoBehaviour
         gem.transform.DOLocalMove(targetPosition, .5f)
             .SetEase(Ease.InSine);
 
-        gemStack.Add(gem);
+        gemList.Add(gem);
         _gemOffsetIndex++;
         
     }
 
     private IEnumerator SellGemsCoroutine()
     {
-        while (gemStack.Count > 0)
+        while (gemList.Count > 0)
         {
             if (!_isInSaleArea)
                 break;
             
-            var topGem = gemStack[gemStack.Count - 1];
-            var gemType = topGem.GetComponent<Gem>().gemType;
-            int gemValue = gemType.startingPrice + (int)(topGem.transform.localScale.x * 100);
-
-            GameEvents.GemSelledEvent?.Invoke(gemValue,topGem);
+            var gem = gemList[gemList.Count - 1];
+            var gemType = gem.GetComponent<Gem>().gemType;
+            int gemValue = gemType.startingPrice + (int)(gem.transform.localScale.x * 100);
             
-            gemStack.Remove(topGem);
-            Destroy(topGem.gameObject);
-            _gemOffsetIndex--;
+            totalGemCount += gemValue;
+            PlayerPrefs.SetInt("TotalGem",totalGemCount);
+            
+            SellGemsAndSave(gem);
+            GameEvents.GemSoldEvent?.Invoke(gemValue,gem);
             yield return new WaitForSeconds(.1f);
         }
+    }
+
+    private void SellGemsAndSave(Gem gem)
+    {
+        soldGems.Add(gem);
+        
+        string gemData = JsonUtility.ToJson(new GemListWrapper { Gems = soldGems });
+        PlayerPrefs.SetString("SoldGems", gemData);
+        
+        gemList.Remove(gem);
+        Destroy(gem.gameObject);
+        _gemOffsetIndex--;
+
     }
 
     private void OnTriggerEnter(Collider other)

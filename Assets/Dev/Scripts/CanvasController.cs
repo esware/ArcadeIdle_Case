@@ -33,7 +33,7 @@ public class CanvasController : MonoBehaviour
 
     private void SignUpEvents()
     {
-        GameEvents.GemSelledEvent += SetText;
+        GameEvents.GemSoldEvent += SetText;
     }
 
     #region Button Methods
@@ -52,9 +52,7 @@ public class CanvasController : MonoBehaviour
 
     private void SetText(int value,Gem gem)
     {
-        Character.Instance.totalGemCount += value;
-        totalGoldText.text = Character.Instance.totalGemCount.ToString();
-        
+        totalGoldText.text = PlayerPrefs.GetInt("TotalGem").ToString();
 
         totalGoldText.rectTransform.DOScale(1.5f, 0.3f).OnComplete(() =>
         {
