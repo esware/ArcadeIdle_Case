@@ -7,7 +7,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class Grid : MonoBehaviour
+public class Tile : MonoBehaviour
 {
     private GameObject _gemInstance;
     private bool _isCollectible = false;

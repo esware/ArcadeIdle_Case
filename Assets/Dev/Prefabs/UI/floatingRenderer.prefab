@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8924158918670688914}
   - component: {fileID: 4353952175232944252}
   m_Layer: 0
-  m_Name: floatingREnderer
+  m_Name: floatingRenderer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

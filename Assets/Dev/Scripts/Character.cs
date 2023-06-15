@@ -32,6 +32,8 @@ public class Character : MonoBehaviour
             Destroy(gameObject);
         }
         SignUpEvents();
+        
+        LoadSoldGems();
     }
 
     private void SignUpEvents()
@@ -47,13 +49,40 @@ public class Character : MonoBehaviour
         var targetPosition = new Vector3(0f, gemStackOffset, -1.5f);
 
         gem.transform.DOLocalMove(targetPosition, .5f)
-            .SetEase(Ease.InSine);
+            .SetEase(Ease.OutExpo);
 
         gemList.Add(gem);
         _gemOffsetIndex++;
         
     }
+    private void SellGemsAndSave(Gem gem)
+    {
+        gemList.Remove(gem);
+        _gemOffsetIndex--;
 
+    }
+
+    private void LoadSoldGems()
+    {
+        
+    }
+
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("SaleArea"))
+        {
+            _isInSaleArea = true;
+            StartCoroutine(SellGemsCoroutine());
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag("SaleArea"))
+        {
+            _isInSaleArea = false;
+        }
+    }
     private IEnumerator SellGemsCoroutine()
     {
         while (gemList.Count > 0)
@@ -71,35 +100,6 @@ public class Character : MonoBehaviour
             SellGemsAndSave(gem);
             GameEvents.GemSoldEvent?.Invoke(gemValue,gem);
             yield return new WaitForSeconds(.1f);
-        }
-    }
-
-    private void SellGemsAndSave(Gem gem)
-    {
-        soldGems.Add(gem);
-        
-        string gemData = JsonUtility.ToJson(new GemListWrapper { Gems = soldGems });
-        PlayerPrefs.SetString("SoldGems", gemData);
-        
-        gemList.Remove(gem);
-        Destroy(gem.gameObject);
-        _gemOffsetIndex--;
-
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.CompareTag("SaleArea"))
-        {
-            _isInSaleArea = true;
-            StartCoroutine(SellGemsCoroutine());
-        }
-    }
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.gameObject.CompareTag("SaleArea"))
-        {
-            _isInSaleArea = false;
         }
     }
     
