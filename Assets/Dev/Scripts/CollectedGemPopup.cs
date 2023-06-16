@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using Dev.Scripts;
+using TMPro;
 using UnityEngine;
 using Path = DG.Tweening.Plugins.Core.PathCore.Path;
 
@@ -10,6 +11,7 @@ public class CollectedGemPopup : MonoBehaviour
 {
     [SerializeField] private Item itemPrefab;
     [SerializeField] private Transform itemTransform;
+    [SerializeField] private TextMeshProUGUI totalSoldGoldText= null;
     
     private void OnEnable()
     {
@@ -26,30 +28,16 @@ public class CollectedGemPopup : MonoBehaviour
 
     private void CreateItem()
     {
-        if (Character.Instance.soldGems.Count <1)
-            return;
-        
-        Dictionary<GemType, int> gemTypeDic = new Dictionary<GemType, int>();
 
-        foreach (var gem in Character.Instance.soldGems)
-        {
-            if (!gemTypeDic.ContainsKey(gem.gemType))
-            {
-                gemTypeDic[gem.gemType] = 1;
-            }
-            else
-            {
-                gemTypeDic[gem.gemType]++;
-            }
-        }
-
-        foreach (var kvp in gemTypeDic)
+        foreach (var kvp in Character.Instance.soldGems)
         {
             var item = Instantiate(itemPrefab.gameObject, itemTransform);
             item.GetComponent<Item>().itemImage.sprite = kvp.Key.icon;
             item.GetComponent<Item>().itemCountText.text = "Collected Count : " + kvp.Value;
             item.GetComponent<Item>().itemTypeText.text = "Gem Type : " + kvp.Key.gemName;
         }
+
+        totalSoldGoldText.text = "Total Gold :"+PlayerPrefs.GetInt("TotalSoldGold").ToString();
     }
 
 }

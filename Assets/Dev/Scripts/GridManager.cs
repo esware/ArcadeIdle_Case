@@ -13,7 +13,7 @@ namespace Dev.Scripts
         
         private static GridManager _instance;
         public static GridManager Instance => _instance;
-
+        
         private void Awake()
         {
             if (_instance == null)
@@ -31,6 +31,8 @@ namespace Dev.Scripts
 
         private void GenerateGrid()
         {
+            GemPool.Instance.Initialize(gemTypeList,GetTotalGemCount());
+
             foreach (var gridData in gridList)
             {
                 int rowCount = gridData.rowCount;
@@ -48,6 +50,23 @@ namespace Dev.Scripts
                 }
             }
         }
+        
+        private int GetTotalGemCount()
+        {
+            int totalGemCount = 0;
+
+            foreach (var gridData in gridList)
+            {
+                int rowCount = gridData.rowCount;
+                int columnCount = gridData.columnCount;
+                int gemCountPerGrid = rowCount * columnCount;
+
+                totalGemCount += gemCountPerGrid;
+            }
+
+            return totalGemCount;
+        }
+        
     }
 
 

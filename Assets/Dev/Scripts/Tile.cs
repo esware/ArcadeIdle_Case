@@ -14,24 +14,21 @@ public class Tile : MonoBehaviour
     
     private void Awake()
     {
-        SpawnGem(GridManager.Instance.gemTypeList);
+        SpawnGem();
     }
     
-    private void SpawnGem(List<GemType> gemTypes)
+    private void SpawnGem()
     {
         if (_gemInstance != null)
         {
             Destroy(_gemInstance);
         }
 
-        var randomGemType = gemTypes[Random.Range(0, gemTypes.Count)];
-        
-        _gemInstance = Instantiate(randomGemType.model, transform);
-        _gemInstance.AddComponent<Gem>();
-        _gemInstance.GetComponent<Gem>().gemType = randomGemType;
+        _gemInstance = GemPool.Instance.GetGem();
+        _gemInstance.transform.SetParent(transform);
         _gemInstance.transform.localScale = Vector3.zero;
-        gameObject.name = randomGemType.gemName;
-        
+        _gemInstance.transform.localPosition = Vector3.zero;
+
         _isCollectible = false;
 
         StartCoroutine(ScaleGem());
@@ -44,7 +41,7 @@ public class Tile : MonoBehaviour
             GameEvents.GemCollectedEvent?.Invoke(_gemInstance.GetComponent<Gem>());
             _gemInstance = null;
             
-            SpawnGem(GridManager.Instance.gemTypeList);
+            SpawnGem();
         }
     }
     

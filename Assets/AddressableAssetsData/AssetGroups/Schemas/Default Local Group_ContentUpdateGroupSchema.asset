@@ -9,10 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e19a7e8d336349cbbf30f0f5d4f6cc29, type: 3}
-  m_Name: Green Gem
+  m_Script: {fileID: 11500000, guid: 5834b5087d578d24c926ce20cd31e6d6, type: 3}
+  m_Name: Default Local Group_ContentUpdateGroupSchema
   m_EditorClassIdentifier: 
-  gemName: GreenGem
-  startingPrice: 50
-  icon: {fileID: 0}
-  model: {fileID: 5715424718730213020, guid: b06ba869a2a371a43ab72e6e22de4fe0, type: 3}
+  m_Group: {fileID: 11400000, guid: eb1b95c12898bc74a8c0b3cbfafe331a, type: 2}
+  m_StaticContent: 0

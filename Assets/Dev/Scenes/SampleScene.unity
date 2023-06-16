@@ -1258,9 +1258,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92d4335505824f64bb4f51e6ab8dd299, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  totalGemCount: 0
   gemList: []
-  soldGems: []
+  soldGem: []
 --- !u!1 &1390547644
 GameObject:
   m_ObjectHideFlags: 0
@@ -1790,20 +1789,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 7058660385235377979, guid: b62b5b6fa6041024dacbf3812d049d51, type: 3}
   m_PrefabInstance: {fileID: 7058660384873238668}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1785614266
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1785614262}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9c448e351388094478dcd8a9456b73bf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemPrefab: {fileID: -6982771917765674533, guid: b0bc66505bcbcbc43a539a6ded399210, type: 3}
-  itemTransform: {fileID: 2034638085}
 --- !u!1 &1997327693
 GameObject:
   m_ObjectHideFlags: 0
@@ -1900,11 +1885,6 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 833febe6485af994c89c8611e7a7039e, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cd93fdbedacc1fd4d990e217978fbf2b, type: 3}
---- !u!224 &2034638085 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 7058660385843231139, guid: b62b5b6fa6041024dacbf3812d049d51, type: 3}
-  m_PrefabInstance: {fileID: 7058660384873238668}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7058660384873238668
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1918,7 +1898,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7058660384222389489, guid: b62b5b6fa6041024dacbf3812d049d51, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0.9999966
+      value: 0.9999695
       objectReference: {fileID: 0}
     - target: {fileID: 7058660385235377978, guid: b62b5b6fa6041024dacbf3812d049d51, type: 3}
       propertyPath: m_Name
@@ -2013,33 +1993,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7058660385479069580, guid: b62b5b6fa6041024dacbf3812d049d51, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7058660385479069580, guid: b62b5b6fa6041024dacbf3812d049d51, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7058660385479069580, guid: b62b5b6fa6041024dacbf3812d049d51, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1685918876}
-    - target: {fileID: 7058660385479069580, guid: b62b5b6fa6041024dacbf3812d049d51, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7058660385479069580, guid: b62b5b6fa6041024dacbf3812d049d51, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: CloseTotalGemCanvas
-      objectReference: {fileID: 0}
-    - target: {fileID: 7058660385479069580, guid: b62b5b6fa6041024dacbf3812d049d51, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: CanvasController, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 7058660385479069580, guid: b62b5b6fa6041024dacbf3812d049d51, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
     - target: {fileID: 7058660385843231139, guid: b62b5b6fa6041024dacbf3812d049d51, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
@@ -2049,16 +2005,12 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7058660385843231139, guid: b62b5b6fa6041024dacbf3812d049d51, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7058660385843231139, guid: b62b5b6fa6041024dacbf3812d049d51, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7058660385843231139, guid: b62b5b6fa6041024dacbf3812d049d51, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -359.99994
+      value: -359.99985
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b62b5b6fa6041024dacbf3812d049d51, type: 3}

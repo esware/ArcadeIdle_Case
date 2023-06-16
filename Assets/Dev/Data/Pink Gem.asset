@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Pink Gem
   m_EditorClassIdentifier: 
   gemName: Pink Gem
-  startingPrice: 80
+  startingPrice: 150
   icon: {fileID: 21300000, guid: 7d8a051719614b94492e80f957006225, type: 3}
-  model: {fileID: 4828305587231463885, guid: cbc3635b80c599c4daf45cc416e4abeb, type: 3}
+  model: {fileID: 9116890768092359880, guid: 479899030b5a82b49931f2acee0f3256, type: 3}

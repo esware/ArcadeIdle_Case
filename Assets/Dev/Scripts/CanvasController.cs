@@ -1,12 +1,9 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Net.Mime;
 using Dev.Scripts;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using Quaternion = System.Numerics.Quaternion;
 
 public class CanvasController : MonoBehaviour
 {
@@ -16,6 +13,10 @@ public class CanvasController : MonoBehaviour
     [SerializeField] private GameObject totalGemCanvas=null;
     [SerializeField] private GameObject floatingGoldText = null;
     [SerializeField] private Image floatingGoldRenderer = null;
+
+    private int totalGoldValue = 0;
+    private Transform canvasTransform;
+    private Transform textTransform;
 
     private void Awake()
     {
@@ -29,6 +30,8 @@ public class CanvasController : MonoBehaviour
         }
         
         SignUpEvents();
+        canvasTransform = transform;
+        textTransform = totalGoldText.transform;
     }
 
     private void SignUpEvents()
@@ -50,45 +53,33 @@ public class CanvasController : MonoBehaviour
 
     #endregion
 
-    private void SetText(int value,Gem gem)
+    private void SetText(int value, Gem gem)
     {
-        totalGoldText.text = PlayerPrefs.GetInt("TotalGem").ToString();
+        totalGoldValue = value + PlayerPrefs.GetInt("TotalSoldGold");
+        PlayerPrefs.SetInt("TotalSoldGold", totalGoldValue);
+        
+        totalGoldText.text = totalGoldValue.ToString();
 
         totalGoldText.rectTransform.DOScale(1.5f, 0.3f).OnComplete(() =>
         {
             totalGoldText.rectTransform.DOScale(1, 0.3f);
         });
 
-
         var characterPos = Character.Instance.transform.position;
 
-        var floatingGemObject =
-            Instantiate(floatingGoldRenderer, characterPos, Quaternion.identity);
-        floatingGemObject.sprite = gem.gemType.icon;
-
-        var floatingTextObject = Instantiate(floatingGoldText, characterPos , Quaternion.identity);
+        var floatingTextObject = Instantiate(floatingGoldText, characterPos, UnityEngine.Quaternion.identity);
         var textComponent = floatingTextObject.GetComponent<Text>();
         textComponent.text = "+" + value;
-        floatingTextObject.transform.SetParent(transform, false);
-        floatingGemObject.transform.SetParent(transform,false);
+        floatingTextObject.transform.SetParent(canvasTransform, false);
         
-        PlayFloatingTextAnimation(floatingTextObject,floatingGemObject);
-
+        PlayFloatingTextAnimation(floatingTextObject);
     }
     
-    
-    private void PlayFloatingTextAnimation(GameObject floatingTextObject , Image floatingGemObject)
+    private void PlayFloatingTextAnimation(GameObject floatingTextObject)
     {
-        
-        floatingTextObject.transform.DOMoveY(totalGoldText.transform.position.y, 1f).SetEase(Ease.InSine).OnUpdate(() =>
+        floatingTextObject.transform.DOMoveY(textTransform.position.y, 1f).SetEase(Ease.InSine).OnUpdate(() =>
         {
             floatingTextObject.transform.DOScale(0f, .5f).SetDelay(.5f);
         }).OnComplete(() => Destroy(floatingTextObject));
-        
-        floatingGemObject.rectTransform.DOMove(totalGoldText.transform.position, 1f).SetEase(Ease.InSine).OnUpdate(() =>
-        {
-            floatingGemObject.transform.DOScale(0f, 1f).SetDelay(1);
-        }).OnComplete(() => Destroy(floatingGemObject.gameObject));
     }
-
 }

@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+
 namespace Dev.Scripts
 {
     [System.Serializable]
@@ -9,6 +10,6 @@ namespace Dev.Scripts
         public int startingPrice;
         public Sprite icon;
         public GameObject model;
-    }
 
+    }
 }

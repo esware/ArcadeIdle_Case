@@ -3,9 +3,9 @@
 namespace Dev.Scripts
 {
     [System.Serializable]
-    public class GemListWrapper
+    public class GemData
     {
-        public List<Gem> Gems;
+        
     }
 
 }
