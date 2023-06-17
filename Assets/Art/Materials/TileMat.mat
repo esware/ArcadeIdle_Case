@@ -13,7 +13,8 @@ Material:
   - TCP2_MOBILE
   - TCP2_REFLECTIONS_FRESNEL
   - TCP2_RIM_LIGHTING_LIGHTMASK
-  - TCP2_SPECULAR_CRISP
+  - TCP2_SPECULAR
+  - TCP2_SPECULAR_STYLIZED
   m_InvalidKeywords:
   - TCP2_UV_NORMALS_FULL
   m_LightmapFlags: 4
@@ -139,9 +140,9 @@ Material:
     - _SpecularHighlights: 1
     - _SpecularMapType: 0
     - _SpecularRoughness: 0.2
-    - _SpecularToonSize: 0.005
-    - _SpecularToonSmoothness: 1
-    - _SpecularType: 2
+    - _SpecularToonSize: 0.3
+    - _SpecularToonSmoothness: 0.7
+    - _SpecularType: 1
     - _SrcBlend: 1
     - _UVSec: 0
     - _UseAlphaTest: 0
@@ -157,17 +158,17 @@ Material:
     - _UseRim: 0
     - _UseRimLightMask: 1
     - _UseShadowTexture: 0
-    - _UseSpecular: 0
+    - _UseSpecular: 1
     - _ZWrite: 1
     m_Colors:
-    - _BaseColor: {r: 0.3551086, g: 0.4135931, b: 0.7169812, a: 1}
+    - _BaseColor: {r: 0.41233534, g: 0.46730813, b: 0.7735849, a: 1}
     - _Color: {r: 0.35617658, g: 0.8679245, b: 0.5257094, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _HColor: {r: 1, g: 1, b: 1, a: 1}
+    - _HColor: {r: 0.48082635, g: 0.19651122, b: 0.6037736, a: 1}
     - _MatCapColor: {r: 1, g: 1, b: 1, a: 1}
     - _OutlineColor: {r: 0, g: 0, b: 0, a: 1}
     - _ReflectionColor: {r: 1, g: 1, b: 1, a: 1}
     - _RimColor: {r: 0.8, g: 0.8, b: 0.8, a: 0.5}
-    - _SColor: {r: 0.4716981, g: 0.4716981, b: 0.4716981, a: 1}
+    - _SColor: {r: 1, g: 1, b: 1, a: 1}
     - _SpecularColor: {r: 0.75, g: 0.75, b: 0.75, a: 1}
   m_BuildTextureStacks: []

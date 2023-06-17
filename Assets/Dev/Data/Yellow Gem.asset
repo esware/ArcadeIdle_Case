@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Yellow Gem
   m_EditorClassIdentifier: 
   gemName: Yellow Gem
-  startingPrice: 20
-  icon: {fileID: 21300000, guid: ea69e9a45f7e72f4fb2b7968b2fc4e07, type: 3}
+  startingPrice: 50
+  icon: {fileID: 21300000, guid: 8e35fa855a2903146bfedf0597b0cf4d, type: 3}
   model: {fileID: 3939818882895287094, guid: 464ebeb3539948141a7f338921f011e6, type: 3}

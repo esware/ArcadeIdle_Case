@@ -15,8 +15,43 @@ MonoBehaviour:
   m_GroupName: Default Local Group
   m_Data:
     m_SerializedData: []
-  m_GUID: 8e28443bb42960e418a1e6cfe9322d62
-  m_SerializeEntries: []
+  m_GUID: 2fabd7ed6495b92468cd110edffa9240
+  m_SerializeEntries:
+  - m_GUID: 75e8585518097c24ab7146c0a641e5ca
+    m_Address: Blue Gem
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    addressableName: 
+  - m_GUID: 4ca352003c623494d9d50309a7c885c2
+    m_Address: Orange Gem
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    addressableName: 
+  - m_GUID: a858c22b0a4d3f54fbc1d0442b7a9312
+    m_Address: Purple Gem
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    addressableName: 
+  - m_GUID: 8e35fa855a2903146bfedf0597b0cf4d
+    m_Address: Yellow Gem
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    addressableName: 
+  - m_GUID: 775fc7f3c11d09f488fd165460e5f93f
+    m_Address: Pink Gem
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    addressableName: 
+  - m_GUID: a0adfc2dd3325fd4dbe8adfad86e7260
+    m_Address: Red Gem
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    addressableName: 
+  - m_GUID: 588aa030ec55dda499ef43aeee2877bd
+    m_Address: Green Gem
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    addressableName: 
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 35377a5b19403f748b8637ef9a7e1f7e, type: 2}
   m_SchemaSet:
