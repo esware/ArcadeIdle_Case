@@ -13,7 +13,6 @@ Material:
   - TCP2_MOBILE
   - TCP2_REFLECTIONS_FRESNEL
   - TCP2_RIM_LIGHTING_LIGHTMASK
-  - TCP2_SPECULAR
   - TCP2_SPECULAR_STYLIZED
   m_InvalidKeywords:
   - TCP2_UV_NORMALS_FULL
@@ -127,7 +126,7 @@ Material:
     - _RampOffset: 0
     - _RampScale: 1
     - _RampSmoothing: 0.4
-    - _RampThreshold: 0.7
+    - _RampThreshold: 0.738
     - _RampType: 0
     - _ReceiveShadowsOff: 1
     - _ReflectionMapType: 0
@@ -158,10 +157,10 @@ Material:
     - _UseRim: 0
     - _UseRimLightMask: 1
     - _UseShadowTexture: 0
-    - _UseSpecular: 1
+    - _UseSpecular: 0
     - _ZWrite: 1
     m_Colors:
-    - _BaseColor: {r: 0.42653078, g: 0.4751869, b: 0.6698113, a: 1}
+    - _BaseColor: {r: 0.30838376, g: 0.37651157, b: 0.6603774, a: 1}
     - _Color: {r: 0.35617658, g: 0.8679245, b: 0.5257094, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _HColor: {r: 1, g: 1, b: 1, a: 1}
