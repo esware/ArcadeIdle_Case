@@ -1,4 +1,4 @@
-# ArcadeIdle_Case
+# DiamondFarming
 Crystal Field: Collect & Sell
 
 Crystal Field: Collect & Sell is a fun mobile game where you gather different types of crystals that grow automatically in the field and sell them for profit. In the game, you can collect randomly generated crystals on grids by moving your character with a joystick.
